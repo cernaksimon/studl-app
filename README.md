@@ -1,2 +1,2 @@
-# studl-app
-best app
+-python v 3.8
+-django v 3.1.4
