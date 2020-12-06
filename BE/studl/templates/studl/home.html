@@ -1,0 +1,15 @@
+{% extends 'studl/base.html' %}
+{% block content %}
+    {% for delo in dela %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ delo.delodajalec }}</a>
+                    <small class="text-muted">{{ delo.date_posted }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ delo.naziv }}</a></h2>
+                <p class="article-content">{{ delo.opis }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
