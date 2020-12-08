@@ -3,18 +3,15 @@ import React,{useEffect, useState} from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput, ImageBackground } from 'react-native';
 import FormLogin from './app/components/LoginScreen';
 import FormRegistration from './app/components/RegistrationScreen';
-import axios from 'axios';
 
 export default function App() {
-  const [data, useData]=useEffect()
+  const [data, setData]=useState()
 
-  useEffect(async () => {
-    const result = await axios(
-      'https://hn.algolia.com/api/v1/search?query=redux',
-    );
-    setData(result.data);
-  });
-
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/all_users/").then(
+        res => setData(res.data)
+    )
+})
   return (
         <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
           <ImageBackground
@@ -23,11 +20,7 @@ export default function App() {
             uri: "https://picsum.photos/1800/1800"}}>
             <Text style={styles.studlApp}>Studl App</Text>
             <ul>
-              {data.map(item => (
-              <li>
-                {item.email}
-              </li>
-              ))}
+              {data}
             </ul>
           </ImageBackground>
         </KeyboardAvoidingView> 
