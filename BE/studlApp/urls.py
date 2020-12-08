@@ -22,6 +22,7 @@ from api import views as api_views
 
 router = routers.DefaultRouter()
 router.register(r'all_users', api_views.UserViewSet)
+router.register(r'all_jobs', api_views.JobPostViewSet)
 
 urlpatterns = [
     #API klici

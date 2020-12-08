@@ -8,8 +8,8 @@ export default function App() {
   const [data, setData]=useState()
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/all_users/").then(
-        res => setData(res.data)
+    fetch("http://127.0.0.1:8000/api/all_jobs/").then(
+        res => console.log(res.json())
     )
 })
   return (
@@ -19,9 +19,9 @@ export default function App() {
            source={{
             uri: "https://picsum.photos/1800/1800"}}>
             <Text style={styles.studlApp}>Studl App</Text>
-            <ul>
+            <Text>
               {data}
-            </ul>
+            </Text>
           </ImageBackground>
         </KeyboardAvoidingView> 
   );
