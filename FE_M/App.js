@@ -1,15 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React,{useState} from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput, ImageBackground } from 'react-native';
-import FormLogin from './resources/components/FormLogin';
-import FormRegistration from './resources/components/FormRegistration';
+import FormLogin from './app/components/LoginScreen';
+import FormRegistration from './app/components/RegistrationScreen';
 
 export default function App() {
   return (
         <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
-          <ImageBackground style={styles.container} source={require('./resources/img/students_bg.jpg')}>
+          <ImageBackground
+           style={styles.container}
+           source={{
+            uri: "https://picsum.photos/1800/1800"}}>
             <Text style={styles.studlApp}>Studl App</Text>
-            <FormRegistration/>
+            <FormLogin/>
           </ImageBackground>
         </KeyboardAvoidingView> 
   );
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
   },
 
   studlApp: {
-    paddingTop: 50,
+    paddingTop: 0,
     paddingBottom: 25,
     marginBottom: 10,
     alignSelf: 'center',
