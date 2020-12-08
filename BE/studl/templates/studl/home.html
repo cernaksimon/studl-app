@@ -1,14 +1,14 @@
 {% extends 'studl/base.html' %}
 {% block content %}
-    {% for delo in dela %}
+    {% for job in jobs %}
         <article class="media content-section">
             <div class="media-body">
                 <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ delo.delodajalec }}</a>
-                    <small class="text-muted">{{ delo.date_posted }}</small>
+                    <a class="mr-2" href="#">{{ job.employer }}</a>
+                    <small class="text-muted">Posted: {{ job.date_posted|date:'d.m.yy' }}</small>
                 </div>
-                <h2><a class="article-title" href="#">{{ delo.naziv }}</a></h2>
-                <p class="article-content">{{ delo.opis }}</p>
+                <h2><a class="article-title" href="#">{{ job.title }}</a></h2>
+                <p class="article-content">{{ job.description }}</p>
             </div>
         </article>
     {% endfor %}
