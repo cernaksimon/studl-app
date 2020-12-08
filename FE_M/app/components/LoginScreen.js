@@ -9,7 +9,7 @@ export default function App() {
   
 
   return (
-      <View style={styles.formContainer}> 
+      <View style={styles.formContainer}>
         <Text style={styles.header}>E-mail</Text>
         <TextInput style={styles.textInput} keyboardType='email-address' onChangeText={val=>setEmail(val)}/>
         <Text style={styles.header}>Geslo</Text>

@@ -1,10 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput, ImageBackground } from 'react-native';
 import FormLogin from './app/components/LoginScreen';
 import FormRegistration from './app/components/RegistrationScreen';
+import axios from 'axios';
 
 export default function App() {
+  const [data, useData]=useEffect()
+
+  useEffect(async () => {
+    const result = await axios(
+      'https://hn.algolia.com/api/v1/search?query=redux',
+    );
+    setData(result.data);
+  });
+
   return (
         <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
           <ImageBackground
@@ -12,7 +22,13 @@ export default function App() {
            source={{
             uri: "https://picsum.photos/1800/1800"}}>
             <Text style={styles.studlApp}>Studl App</Text>
-            <FormLogin/>
+            <ul>
+              {data.map(item => (
+              <li>
+                {item.email}
+              </li>
+              ))}
+            </ul>
           </ImageBackground>
         </KeyboardAvoidingView> 
   );
