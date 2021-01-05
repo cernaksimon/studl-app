@@ -18,7 +18,7 @@ export default function App() {
            style={styles.container}
            source={{
             uri: "https://picsum.photos/1800/1800"}}>
-            <Text style={styles.studlApp}>Studl App</Text>
+            <Image style={styles.image} source={require('./app/img/shtudlLOGO.png')}/>
             <Text>
               {data}
             </Text>
@@ -30,6 +30,11 @@ export default function App() {
 const styles = StyleSheet.create({
   wrapper:{
     flex:1,
+  },
+  image:{
+    alignItems: 'flex-start',
+    width: 200,
+    height: 200,
   },
   container: {
     flex: 1,
