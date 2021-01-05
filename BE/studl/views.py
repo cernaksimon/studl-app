@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import JobPost
 
+
 def home(request):
     context = {
         'jobs': JobPost.objects.all()

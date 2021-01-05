@@ -31,12 +31,14 @@
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="{% url 'studl-home' %}">Home</a>
                     <a class="nav-item nav-link" href="{% url 'studl-about' %}">About</a>
+                    <a class="nav-item nav-link" href="admin/">Admin</a>
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
                     {% if user.is_authenticated %}
                         <a class="nav-item nav-link mr-2" href="{% url 'logout' %}">Logout</a>
-                        <medium class="nav-item pt-2 navbar-text">Logged in as <b>"{{ user.username }}"</b></medium>
+                        <medium class="nav-item pt-2 navbar-text">Logged in as
+                            <b>"{{ user.first_name|add:" "|add:user.last_name }}"</b></medium>
                     {% else %}
                         <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                         <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>

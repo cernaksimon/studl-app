@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+# pip install django-background-tasks
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,11 +33,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Custom
     'studl.apps.StudlConfig',
     'users.apps.UsersConfig',
+    'accounts.apps.AccountsConfig',
+
+    # 3rd Party
     'crispy_forms',
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken',
+
+    # Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +52,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -73,6 +88,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'accounts.StudlUser'
 
 WSGI_APPLICATION = 'studlApp.wsgi.application'
 
@@ -130,4 +147,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'studl-home'
 
+UNICODE_JSON = True
+
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIAL = False

@@ -17,17 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from users import views as users_views
 from django.contrib.auth import views as auth_views
-from rest_framework import routers
-from api import views as api_views
 
-router = routers.DefaultRouter()
-router.register(r'all_users', api_views.UserViewSet)
-router.register(r'all_jobs', api_views.JobPostViewSet)
+
 
 urlpatterns = [
-    #API klici
-    path('api/', include(router.urls)),
-    #Testiranje
+    # API klici
+    path('api/', include('api.urls')),
+    # Testiranje
     path('admin/', admin.site.urls),
     path('register/', users_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
