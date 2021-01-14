@@ -1,34 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React,{useState} from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity, ImageBackground, ScrollView } from "react-native"
 
-export default function App() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const login = {email: email, password: password}
-  
+  class Login extends React.Component {
+    render() {
+      return <View>
+      <Text style={styles.header}>E-mail</Text>
+      <TextInput style={styles.textInput} keyboardType='email-address' />
+      <Text style={styles.header}>Geslo</Text>
+      <TextInput 
+      style={styles.textInput}
+      secureTextEntry={true}
+      />
+      <TouchableOpacity style={styles.button}>
+      <Text style={styles.buttonText}>LOGIN</Text>    
+      </TouchableOpacity>
+      </View>
+    }
+  }
 
-  return (
-      <View style={styles.formContainer}>
-        <Text style={styles.header}>E-mail</Text>
-        <TextInput style={styles.textInput} keyboardType='email-address' onChangeText={val=>setEmail(val)}/>
-        <Text style={styles.header}>Geslo</Text>
-        <TextInput 
-        style={styles.textInput}
-        secureTextEntry={true}
-        onChangeText={val=>setPassword(val)}
-        />
-        <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>LOGIN</Text>    
-        </TouchableOpacity>
-        <Text style={styles.registracija}>Še nimate računa? <Text style={styles.registracija1}>Registrirajte se tukaj!</Text></Text>
-        <Text style={styles.ali}>ALI</Text>
-        <Text style={styles.registracija1}>Vstop kot neregistriran uporabnik.</Text>
-      </View>      
-  );
-}
-
-const styles = StyleSheet.create({
+  const styles = StyleSheet.create({
     ali: {
         alignSelf: 'center',
         fontWeight: 'bold',
@@ -40,6 +30,15 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         paddingLeft: 40,
         paddingRight: 40,
+        paddingTop: 60,
+        backgroundColor: '#5496DE'
+    },
+    bottom: {
+        alignSelf: 'stretch',
+        paddingLeft: 40,
+        paddingRight: 40,
+        paddingTop: 100,
+        color: '#5496DE'
     },
     button: {
         alignSelf: 'center',
@@ -66,8 +65,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     registracija: {
-        marginTop: 10,
-        marginBottom: 10,
         fontSize: 15,
         color: '#fff',
         alignSelf:'center'
@@ -81,6 +78,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textDecorationLine: 'underline'
     },
+    container: {
+        flex: 1,
+        alignSelf: 'stretch',
+        backgroundColor: '#5496DE',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
     textInput: {
         borderColor: 'rgba(255,255,255,0.8)', 
         borderRadius: 10,
@@ -92,3 +96,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.9)'
     }
 });
+
+  {/* <Image style={styles.image} source={require('./app/img/shtudlLOGO.png')}/> */}
+  export default Login;
