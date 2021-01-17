@@ -34,7 +34,7 @@ class Address(models.Model):
     street_number = models.CharField(max_length=12, default=1)
 
     def __str__(self):
-        return f'{self.street.__str__()} {self.street_number}, {self.country.__str__()}, {self.district.__str__()}'
+        return f'{self.street.__str__()} {self.street_number}, {self.district.__str__()}, {self.country.__str__()} '
 
     class Meta:
         verbose_name_plural = 'Addresses'
