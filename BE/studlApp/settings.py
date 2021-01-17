@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
+    'django_celery_beat',
+    'kombu.transport',
 
     # Django
     'django.contrib.admin',
@@ -137,6 +139,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+# CELERY
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
