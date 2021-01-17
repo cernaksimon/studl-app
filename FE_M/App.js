@@ -1,62 +1,55 @@
 import { StatusBar } from 'expo-status-bar';
-import React,{useEffect, useState} from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput, ImageBackground } from 'react-native';
-import FormLogin from './app/components/LoginScreen';
-import FormRegistration from './app/components/RegistrationScreen';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from  '@react-navigation/stack';
+import { AuthContext } from './context'
 
-export default function App() {
-  const [data, setData]=useState()
+import { RegisterScreen, LoginScreen, HomeScreen } from './Screens';
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/all_jobs/").then(
-        res => console.log(res.json())
-    )
-})
-  return (
-        <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
-          <ImageBackground
-           style={styles.container}
-           source={{
-            uri: "https://picsum.photos/1800/1800"}}>
-            <Image style={styles.image} source={require('./app/img/shtudlLOGO.png')}/>
-            <Text>
-              {data}
-            </Text>
-          </ImageBackground>
-        </KeyboardAvoidingView> 
-  );
-}
 
-const styles = StyleSheet.create({
-  wrapper:{
-    flex:1,
-  },
-  image:{
-    alignItems: 'flex-start',
-    width: 200,
-    height: 200,
-  },
-  container: {
-    flex: 1,
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+// const authContext = React.useMemo(()=>{
+//   return{
+//     signIn: () => {
+//       setUserAuth("user")
+//     },
+//     signUp: () => {
+//       setUserAuth("user")
+//     },
+//     signOut: () => {
+//       setUserAuth(null)
+//     }
+//   }
+// })
 
-  studlApp: {
-    paddingTop: 0,
-    paddingBottom: 25,
-    marginBottom: 10,
-    alignSelf: 'center',
-    fontSize: 69,
-    color: '#9053EE',
+const AuthStack = createStackNavigator(); 
+// const AuthStackScreen = () => (
+//   <AuthStack.Navigator headerMode="none">
+//       <AuthStack.Screen name="Login" component={Login}/>
+//       <AuthStack.Screen name="Register" component={Register}/>
+//       <AuthStack.Screen name="Home" component={Home}/>
+//   </AuthStack.Navigator>  
+// )
 
-  },
+// const RootStack = createStackNavigator();
+// const RootStackScreen = ({userAuth}) => (
+//   <RootStack.Navigator headerMode="none">
+//     {userAuth ? 
+//     (<RootStack.Screen name="Auth" component={AuthStackScreen}/>)
+//     :
+//     (<RootStack.Screen name="App" component={Home}/>)
+//     }
+//   </RootStack.Navigator>
+// )
 
-  header: {
-    fontSize: 38,
-    color: '#5496DE',
-    fontWeight: 'bold'
-  }
-});
+
+
+
+export default () => (
+  <NavigationContainer>
+  <AuthStack.Navigator headerMode="none">
+      <AuthStack.Screen name="LoginScreen" component={LoginScreen}/>
+      <AuthStack.Screen name="RegisterScreen" component={RegisterScreen}/>
+      <AuthStack.Screen name="HomeScreen" component={HomeScreen}/>
+   </AuthStack.Navigator>
+  </NavigationContainer>
+)
