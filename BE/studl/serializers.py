@@ -53,19 +53,4 @@ class EmployerSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=255)
     phone_number = serializers.IntegerField()
     description = serializers.CharField()
-
-
-class EmployerRatingSerializer(serializers.Serializer):
-    user_id = serializers.IntegerField()
-    employer_id = serializers.IntegerField()
-    rating = serializers.IntegerField()
-
-class EmployerIdSerializer(serializers.Serializer):
-    employer_id = serializers.IntegerField()
-
-class StudlUserSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    first_name = serializers.CharField()
-    last_name = serializers.CharField()
-    email = serializers.EmailField()
-    date_joined = serializers.DateTimeField()
+    address = serializers.StringRelatedField(many=False, read_only=True)

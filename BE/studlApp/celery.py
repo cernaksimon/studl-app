@@ -25,7 +25,7 @@ app = Celery('studlApp')
 
 @app.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
-    sender.add_periodic_task(15.0, ess_spyder, name='spyder_test')
+    sender.add_periodic_task(30.0, ess_spyder, name='spyder_test')
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.

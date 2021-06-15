@@ -47,6 +47,8 @@ class StudlUser(AbstractBaseUser):
     last_name = models.CharField(max_length=128)
     date_joined = models.DateTimeField(verbose_name='date_joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last_login', auto_now=True)
+
+    # Permission fields
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
