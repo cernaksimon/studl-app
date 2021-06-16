@@ -7,37 +7,51 @@ import Registration from './screens/Registration'
 import { AuthContext } from "./context";
 
 
+
 const ScreenContainer = ({ children }) => (
     <View>{children}</View>
 )
 
-export const LoginScreen = ({navigation}) => {
-    return(
-    <ScreenContainer style={styles.container}>
-        <View style={styles.formContainer}>
-        <Login></Login>
-        <Text style={styles.registracija}>Še nimate računa? <Button title="Registrirajte se tukaj!" onPress={()=>navigation.push("RegisterScreen")}/></Text>
-        <Text style={styles.ali}>ALI</Text>
-        <Button title="Vstop kot neregistriran uporabnik!" onPress={()=>navigation.push("HomeScreen")}/>
-        </View>
-    </ScreenContainer>
+export const LoginScreen = ({ navigation }) => {
+    const { signIn } = React.useContext(AuthContext)
+    return (
+        <ScreenContainer style={styles.container}>
+            <View style={styles.formContainer}>
+                <Login></Login>
+                <Text style={styles.registracija}>Še nimate računa? <Button title="Registrirajte se tukaj!" onPress={() => navigation.push("RegisterScreen")} /></Text>
+                <Text style={styles.ali}>ALI</Text>
+                <Button title="Vstop kot neregistriran uporabnik!" onPress={() => signIn('123')} />
+            </View>
+        </ScreenContainer>
     )
 };
 
-export const RegisterScreen = ({navigation}) => (
-    <ScreenContainer>
-        <ScrollView style={styles.formContainer}>
-        <Registration></Registration>
-        <Text style={styles.registracija}>Že imate račun? <Button  title="Login" onPress={()=>navigation.push("LoginScreen")}/></Text>
-        <Button title="Vstop kot neregistriran uporabnik!" onPress={()=>navigation.push("HomeScreen")}/>
-        </ScrollView>
-    </ScreenContainer>
-);
+export const RegisterScreen = ({ navigation }) => {
+    const { signIn } = React.useContext(AuthContext)
+    return (
+        <ScreenContainer>
+            <ScrollView style={styles.formContainer}>
+                <Registration></Registration>
+                <Text style={styles.registracija}>Že imate račun? <Button title="Login" onPress={() => navigation.push("LoginScreen")} /></Text>
+                <Button title="Vstop kot neregistriran uporabnik!" onPress={() => signIn('123')} />
+            </ScrollView>
+        </ScreenContainer>
+    )
+};
 
-export const HomeScreen = ({navigation}) => (
-    <ScreenContainer style={styles.formContainer}>
-        <Home></Home>
-        <Button style={styles.button} title="Sign out" onPress={()=>navigation.push("LoginScreen")}/>
+export const HomeScreen = ({ navigation }) => {
+    const { signOut } = React.useContext(AuthContext)
+    return (
+        <ScreenContainer style={styles.formContainer}>
+            <Home></Home>
+            <Button style={styles.button} title="Sign out" onPress={() => signOut()} />
+        </ScreenContainer>
+    )
+};
+
+export const Splash = () => (
+    <ScreenContainer>
+        <Text style={styles.ali}>Loading...</Text>
     </ScreenContainer>
 );
 
@@ -67,7 +81,7 @@ const styles = StyleSheet.create({
     },
     button: {
         alignSelf: 'center',
-        borderColor: 'rgba(255,255,255,0.8)', 
+        borderColor: 'rgba(255,255,255,0.8)',
         borderRadius: 10,
         height: 50,
         width: 200,
@@ -85,21 +99,21 @@ const styles = StyleSheet.create({
     header: {
         fontSize: 25,
         color: '#5496DE',
-        alignSelf:'center',
+        alignSelf: 'center',
         backgroundColor: '#fff',
         fontWeight: 'bold'
     },
     registracija: {
         fontSize: 15,
         color: '#fff',
-        alignSelf:'center'
+        alignSelf: 'center'
     },
     registracija1: {
         marginTop: 10,
         marginBottom: 10,
         fontSize: 15,
         color: '#fff',
-        alignSelf:'center',
+        alignSelf: 'center',
         fontWeight: 'bold',
         textDecorationLine: 'underline'
     },
@@ -109,9 +123,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#5496DE',
         alignItems: 'center',
         justifyContent: 'center',
-      },
+    },
     textInput: {
-        borderColor: 'rgba(255,255,255,0.8)', 
+        borderColor: 'rgba(255,255,255,0.8)',
         borderRadius: 10,
         alignSelf: 'stretch',
         padding: 20,
