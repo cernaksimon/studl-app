@@ -32,9 +32,14 @@ class RegistrationSerializer(serializers.ModelSerializer):
 class JobPostSerializer(serializers.Serializer):
     id = serializers.CharField(max_length=128)
     title = serializers.CharField(max_length=128)
-    description = serializers.CharField()
+    description = serializers.CharField(allow_null=True)
+    payment = serializers.CharField(allow_null=True)
+    duration = serializers.CharField(allow_null=True)
+    schedule = serializers.CharField(allow_null=True)
+    free_positions = serializers.CharField(allow_null=True)
     date_posted = serializers.DateTimeField()
-    employer = serializers.StringRelatedField(many=False, read_only=True)
+
+
 
     def create(self, validated_data):
         return JobPost.objects.create(**validated_data)
@@ -69,3 +74,9 @@ class StudlUserSerializer(serializers.Serializer):
     last_name = serializers.CharField()
     email = serializers.EmailField()
     date_joined = serializers.DateTimeField()
+
+class UpdateUserSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    first_name = serializers.CharField()
+    last_name = serializers.CharField()
+    password = serializers.CharField()

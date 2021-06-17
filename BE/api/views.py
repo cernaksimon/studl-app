@@ -60,7 +60,7 @@ def api_user_view(request):
 
 @api_view(['POST', ])
 def api_rate_employer_view(request):
-
+    # neki post
     serializer = EmployerRatingSerializer(data=request.data)
     if serializer.is_valid():
         rating = serializer.data.get('rating')
@@ -110,5 +110,31 @@ def api_average_employer_score(request):
         else:
             message = f'{employer.title} has no ratings.'
             return Response({'message': message})
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST', ])
+def api_update_user(request):
+    serializer = UpdateUserSerializer(data=request.data)
+
+    if serializer.is_valid():
+        id = serializer.data.get('id')
+        first_name = serializer.data.get('first_name')
+        last_name = serializer.data.get('last_name')
+        password = serializer.data.get('password')
+
+        user = StudlUser.objects.filter(id=id).first()
+        if not first_name == '' or not first_name == '':
+            user.first_name = first_name
+
+        if not last_name == '' or not last_name == '':
+            user.last_name = last_name
+
+        if not password == '' or not password == '':
+            user.set_password(password)
+
+        user.save()
+        return Response({'message': 'Saved changes'})
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
