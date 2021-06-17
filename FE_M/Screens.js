@@ -26,9 +26,9 @@ export const LoginScreen = ({ navigation }) => {
     const { signIn } = React.useContext(AuthContext)
     return (
         <ScreenContainer style={styles.container}>
-            <ImageBackground source={require('E:/Fork/studl-app/FE_M/images/students_bg.jpg')} style={styles.backgroundImage}>
+            <ImageBackground source={require('./images/students_bg.jpg')} style={styles.backgroundImage}>
             <View style={styles.formContainer}>
-                <Image style={styles.imageL} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+                <Image style={styles.imageL} source={require('./images/shtudlLOGO.png')}/>
                 <Login style={styles.login}></Login>
                 <Text style={styles.registracija}>Še nimate računa? <Button title="Registrirajte se tukaj!" onPress={() => navigation.push("RegisterScreen")} /></Text>
                 <Text style={styles.ali}>ALI</Text>
@@ -58,7 +58,7 @@ export const HomeScreen = ({ navigation }) => {
         <ScreenContainer style={styles.formContainer}>
             <View style={styles.row}>
             <Icon name='align-justify' type='font-awesome-5' style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}/>
-            <Image style={styles.image} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+            <Image style={styles.image} source={require('./images/shtudlLOGO.png')}/>
             </View>
             <Home></Home>
         </ScreenContainer>
@@ -71,7 +71,7 @@ export const ProfileScreen = ({ navigation }) => {
     <ScreenContainer>
         <View style={styles.row}>
         <Icon name='align-justify' type='font-awesome-5' style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}/>
-        <Image style={styles.image} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+        <Image style={styles.image} source={require('./images/shtudlLOGO.png')}/>
         </View>
         <Profile/>
         <Button style={styles.button} title="Sign out" onPress={() => signOut()} />
@@ -84,7 +84,7 @@ export const EmployersScreen = ({ navigation }) => {
     <ScreenContainer>
         <View style={styles.row}>
         <Icon name='align-justify' type='font-awesome-5' style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}/>
-        <Image style={styles.image} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+        <Image style={styles.image} source={require('./images/shtudlLOGO.png')}/>
         </View>
         <Employers/>
     </ScreenContainer>
@@ -96,7 +96,7 @@ export const RateEmployersScreen = ({ navigation }) => {
     <ScreenContainer>
         <View style={styles.row}>
         <Icon name='align-justify' type='font-awesome-5' style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}/>
-        <Image style={styles.image} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+        <Image style={styles.image} source={require('./images/shtudlLOGO.png')}/>
         </View>
         <RateEmployers/>
     </ScreenContainer>
