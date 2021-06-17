@@ -40,7 +40,7 @@ function Registration(props) {
     <Text style={styles.header}>Ime</Text>
     <TextInput
       style={styles.textInput}
-      placeholder='name'
+      placeholder='ime'
       autoCapitalize="none"
       placeholderTextColor='#5496DE'
       onChangeText={val => setName(val)
@@ -48,7 +48,7 @@ function Registration(props) {
     <Text style={styles.header}>Priimek</Text>
     <TextInput
       style={styles.textInput}
-      placeholder='surname'
+      placeholder='priimek'
       autoCapitalize="none"
       placeholderTextColor='#5496DE'
       onChangeText={val => setSurname(val)
@@ -65,7 +65,7 @@ function Registration(props) {
     <TextInput
       secureTextEntry={true}
       style={styles.textInput}
-      placeholder='password'
+      placeholder='geslo'
       autoCapitalize="none"
       placeholderTextColor='#5496DE'
       onChangeText={val => setPassword(val)
@@ -74,7 +74,7 @@ function Registration(props) {
     <TextInput
       secureTextEntry={true}
       style={styles.textInput}
-      placeholder='password'
+      placeholder='ponovite geslo'
       autoCapitalize="none"
       placeholderTextColor='#5496DE'
       onChangeText={val => setPassword2(val)

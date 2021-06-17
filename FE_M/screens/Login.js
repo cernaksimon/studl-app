@@ -42,7 +42,7 @@ function Login(props) {
 
 
 
-  return <View>
+  return <View style={{flex:1}}>
     <Text style={styles.header}>E-mail</Text>
     <TextInput
       style={styles.textInput}
@@ -55,7 +55,7 @@ function Login(props) {
     <TextInput
       style={styles.textInput}
       secureTextEntry={true}
-      placeholder='password'
+      placeholder='geslo'
       autoCapitalize="none"
       placeholderTextColor='#5496DE'
       onChangeText={val => setPassword(val)}

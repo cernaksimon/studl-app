@@ -1,10 +1,20 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity, ImageBackground, ScrollView } from "react-native"
-import Home from './screens/Home'
-import Login from './screens/Login'
-import Registration from './screens/Registration'
+import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity, ImageBackground, ScrollView, Image } from "react-native"
+import Employers from "./screens/Employers";
+import Registration from "./screens/Registration";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
+import Profile from "./screens/Profile";
+import RateEmployers from "./screens/RateEmployers"
+import { Icon } from 'react-native-elements'
 import { AuthContext } from "./context";
+import FontAwesome, {
+    SolidIcons,
+    RegularIcons,
+    BrandIcons,
+    parseIconFromClassName,
+  } from 'react-native-fontawesome';
 
 
 
@@ -16,12 +26,15 @@ export const LoginScreen = ({ navigation }) => {
     const { signIn } = React.useContext(AuthContext)
     return (
         <ScreenContainer style={styles.container}>
+            <ImageBackground source={require('E:/Fork/studl-app/FE_M/images/students_bg.jpg')} style={styles.backgroundImage}>
             <View style={styles.formContainer}>
-                <Login></Login>
+                <Image style={styles.imageL} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+                <Login style={styles.login}></Login>
                 <Text style={styles.registracija}>Še nimate računa? <Button title="Registrirajte se tukaj!" onPress={() => navigation.push("RegisterScreen")} /></Text>
                 <Text style={styles.ali}>ALI</Text>
                 <Button title="Vstop kot neregistriran uporabnik!" onPress={() => signIn('123')} />
             </View>
+            </ImageBackground>
         </ScreenContainer>
     )
 };
@@ -40,12 +53,53 @@ export const RegisterScreen = ({ navigation }) => {
 };
 
 export const HomeScreen = ({ navigation }) => {
-    const { signOut } = React.useContext(AuthContext)
+    
     return (
         <ScreenContainer style={styles.formContainer}>
+            <View style={styles.row}>
+            <Icon name='align-justify' type='font-awesome-5' style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}/>
+            <Image style={styles.image} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+            </View>
             <Home></Home>
-            <Button style={styles.button} title="Sign out" onPress={() => signOut()} />
         </ScreenContainer>
+    )
+};
+
+export const ProfileScreen = ({ navigation }) => {
+    const { signOut } = React.useContext(AuthContext)
+    return (
+    <ScreenContainer>
+        <View style={styles.row}>
+        <Icon name='align-justify' type='font-awesome-5' style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}/>
+        <Image style={styles.image} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+        </View>
+        <Profile/>
+        <Button style={styles.button} title="Sign out" onPress={() => signOut()} />
+    </ScreenContainer>
+    )
+};
+
+export const EmployersScreen = ({ navigation }) => {
+    return (
+    <ScreenContainer>
+        <View style={styles.row}>
+        <Icon name='align-justify' type='font-awesome-5' style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}/>
+        <Image style={styles.image} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+        </View>
+        <Employers/>
+    </ScreenContainer>
+    )
+};
+
+export const RateEmployersScreen = ({ navigation }) => {
+    return (
+    <ScreenContainer>
+        <View style={styles.row}>
+        <Icon name='align-justify' type='font-awesome-5' style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}/>
+        <Image style={styles.image} source={require('E:/Fork/studl-app/FE_M/images/shtudlLOGO.png')}/>
+        </View>
+        <RateEmployers/>
+    </ScreenContainer>
     )
 };
 
@@ -57,6 +111,39 @@ export const Splash = () => (
 
 
 const styles = StyleSheet.create({
+    login: {
+        marginTop:40,
+        paddingTop: 100
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: 'cover', // or 'stretch'
+    },
+    image: {
+        flexWrap: 'wrap',
+        flex:0.5,
+        height: 100,
+        width: 150,
+        alignSelf: 'center',
+        alignItems: 'center',
+    },
+    imageL: {
+        height: 100,
+        width: 150,
+        marginBottom: 50,
+        alignSelf: 'center',
+        alignItems: 'center',
+    },
+    row: {
+        marginTop: 20,
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },  
+    drawerButton: {
+        alignSelf: 'flex-start',
+        paddingLeft: 5, 
+        marginRight: 350
+    },
     ali: {
         alignSelf: 'center',
         fontWeight: 'bold',

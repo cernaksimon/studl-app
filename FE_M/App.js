@@ -5,32 +5,11 @@ import { createStackNavigator } from  '@react-navigation/stack';
 import { createDrawerNavigator  } from '@react-navigation/drawer';
 import { AuthContext } from './context'
 
-import { RegisterScreen, LoginScreen, HomeScreen, Splash} from './Screens';
+import { RegisterScreen, LoginScreen, HomeScreen, Splash, ProfileScreen, EmployersScreen, RateEmployersScreen} from './Screens';
 
 
 const AuthStack = createStackNavigator(); 
 const Drawer = createDrawerNavigator();
-// const AuthStackScreen = () => (
-//   <AuthStack.Navigator headerMode="none">
-//       <AuthStack.Screen name="Login" component={Login}/>
-//       <AuthStack.Screen name="Register" component={Register}/>
-//       <AuthStack.Screen name="Home" component={Home}/>
-//   </AuthStack.Navigator>  
-// )
-
-// const RootStack = createStackNavigator();
-// const RootStackScreen = ({userAuth}) => (
-//   <RootStack.Navigator headerMode="none">
-//     {userAuth ? 
-//     (<RootStack.Screen name="Auth" component={AuthStackScreen}/>)
-//     :
-//     (<RootStack.Screen name="App" component={Home}/>)
-//     }
-//   </RootStack.Navigator>
-// )
-
-
-
 
 export default () => {
 
@@ -68,7 +47,16 @@ export default () => {
     <NavigationContainer>
       {authKey ? (
           <Drawer.Navigator>
-            <Drawer.Screen name="HomeScreen" component={HomeScreen}/>
+            <Drawer.Screen name="Home" component={HomeScreen}/>
+            <Drawer.Screen name="Employers" component={EmployersScreen}/>
+            { authKey!='123'?
+            [
+            <Drawer.Screen name="Rate Employers" component={RateEmployersScreen}/>,
+            <Drawer.Screen name="Profile" component={ProfileScreen}/>
+            ]
+            :
+            <AuthStack.Screen name="Login" component={LoginScreen} authKey={''}/>
+            }
           </Drawer.Navigator>
         ) : (
           <AuthStack.Navigator headerMode='none' >
