@@ -11,5 +11,6 @@ urlpatterns = [
     path('login/', obtain_auth_token, name='login'),  # View zahteva 'username' parameter namesto 'email'
     path('rateEmployer/', api_rate_employer_view, name='rate_employer'),
     path('avgEmployerScore/', api_average_employer_score, name='average_employer_score'),
-    path('users/', api_user_view, name='users')
+    path('users/', api_user_view, name='users'),
+    path('updateUser/', api_update_user, name='update_user')
 ]

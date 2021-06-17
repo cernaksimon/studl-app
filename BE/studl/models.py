@@ -21,9 +21,12 @@ class EmployerRating(models.Model):
 
 class JobPost(models.Model):
     title = models.CharField(max_length=128)
-    description = models.TextField()
+    description = models.TextField(null=True)
+    payment = models.CharField(null=True, max_length=255)
+    duration = models.CharField(null=True, max_length=255)
+    schedule = models.CharField(null=True, max_length=255)
+    free_positions = models.CharField(null=True, max_length=255)
     date_posted = models.DateTimeField(default=timezone.now)
-    employer = models.ForeignKey(Employer, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

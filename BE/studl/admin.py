@@ -7,7 +7,7 @@ from .models import *
 # Complex models
 @admin.register(JobPost)
 class JobPostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'description', 'date_posted', 'employer')
+    list_display = ('id', 'title', 'description', 'date_posted', 'payment')
 
 
 @admin.register(Employer)
